@@ -1,0 +1,333 @@
+@media (max-width: 1190px) {
+    html {
+        font-size: 12px;
+    }
+
+    // ------------------FONTS
+    h1 {
+        font-size: 28px;
+    }
+    h2 {
+        font-size: 24px;
+        line-height: auto;
+    
+    }
+
+    h5 {
+        font-size: 14px;
+        letter-spacing: 0;
+
+    }
+
+    p {
+        font-size: 13px;
+    }
+
+    .bold {
+        font-weight: 500;
+
+    }
+
+    .btn {
+        padding: 8px 0;
+        width: 100px;
+        border-radius: 4px;
+
+
+        // &-grey,
+        // &-active {
+        //     background-color: #859BA6;
+        //     color: #FFFFFF;
+        // }
+
+        // &-transparent {
+        //     background-color: transparent;
+        //     border: 2px solid #859BA6;
+        //     color: #859BA6;
+        // }
+
+        // &-small {
+        //     padding: 8px 7px;
+        //     font-size: 12px;
+        //     border-radius: 3px;
+
+        // }
+
+        &-middle {
+            width: 75px;
+            height: 35px;
+        }
+    }
+
+    .body {
+        position: relative;
+    }
+
+    .gradient:not(.section) {
+        background: transparent
+    }
+
+
+    .header {
+        margin: 15px 15px;
+        height: 30px;
+        padding: 0 6px 0 0;
+
+        &-conteiner {
+
+            &_logo {
+                margin-left: 15px;
+                width: 91px;
+                height: 18px;
+
+            }
+
+            &_menu {
+                position: absolute;
+                top: 60px;
+                z-index: 10;
+                background-color: #FFFFFF;
+                width: 100vw;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+
+                ul {
+                    margin-top: 71px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 40px;
+                }
+            }
+
+            &_info {
+
+
+                &__telephone {
+                    z-index: 10;
+                    position: absolute;
+                    top: 411px;
+                    left: calc(50% - 50px)
+                }
+            }
+
+            &__lang {
+                z-index: 10;
+                position: absolute;
+                top: 503px;
+                left: calc(50% - 25px)
+            }
+
+
+        }
+    }
+
+    // --------------BURGER
+    .btn-x,
+    .btn-burger {
+        margin-right: 20px;
+    }
+
+    .swiper-pagination {
+        z-index: 1;
+    }
+
+    .section {
+        width: 100%;
+        height: 520px;
+        padding: 0 15px;
+
+        &-conteiner {
+            gap: 20px;
+            width: 100%;
+            height: 446px;
+            flex-direction: column;
+
+            &_article {
+            
+                &-box {
+                    width: 100%;
+                    width: 200px;
+                    height: 100%;
+                    gap: 10px;
+                }
+            }
+
+            &_photo {
+                min-width: 240px;
+                height: 150px;
+                display: flex;
+                justify-content: center;
+
+                .photo-product {
+                    max-width: 240px;
+                    height: 150px;
+
+                }
+            }
+
+            &_product {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: flex-end;
+
+                &_content {
+                    gap: 10px;
+                    height: 100%;
+                    width: 160px;
+                    display: flex;
+                    align-items: flex-start;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    max-height: 109px;
+
+                    .btn {
+                        margin-top: 10px;
+                    }
+
+                }
+            }
+
+            &_item {
+
+                height: 33.33%;
+                width: 100%;
+            }
+        }
+    }
+
+    .main .swiper-pagination {
+        display: none;
+    }
+
+    // cookie
+.сookies {
+
+    top: 470px;
+    right: 15px;
+    max-width: 290px;
+    height: 78px;
+    border-radius: 4px;
+}
+
+.сookie {
+    &-conteiner {
+        padding: 15px 20px;
+    }
+
+    &-conteiner_article {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+        p {
+            max-width: 160px;
+            font-size: 12px;
+        }
+
+
+    }
+}
+
+// -----------Form-----------
+.popup {
+    &-box {
+        padding: 15px;
+        position: absolute;
+        top: 20px;
+        width: 100%;
+        height: 100%;
+        transform: translate(-50%, 0);
+    }
+
+    &-box_btn {
+        a {
+            top: 15px;
+            right: 15px;
+        }
+
+    }
+    // ----------------------------------------------
+    &-success {
+        padding: 40px;
+        width: 209px;
+        height: 257px;
+        border-radius: 4px;
+        &_bird {
+           background-size: cover;
+            width: 40px;
+            height: 40px;
+		}
+        &_title{
+            text-align: center;
+
+        }
+        &_text{
+            font-size: 13px;
+            text-align: center;
+            line-height: 130%;
+        }
+
+    }
+  
+}
+
+.popup-box_form {
+
+    &__title {
+        margin-bottom: 15px;
+    }
+
+    &__text {
+        font-size: 13px;
+        margin-bottom: 25px;
+    }
+
+    &__conteiner {
+        max-width: 290px;
+        gap: 10px;
+
+        &__warning {
+            font-size: 10px;
+        }
+    }
+
+    .number {
+
+        &-field {
+            background-position: 15px 7px;
+            padding-left: 45px !important;
+        }
+
+    }
+
+    input[type='text'] {
+        height: 35px;
+        font-size: 14px;
+        line-height: 130%;
+        padding: 9px 20px 8px 15px;
+        border-radius: 4px;
+        width: 100%;
+    }
+
+    input[type='text']::placeholder {
+        font-size: 14px;
+    }
+
+    .submit {
+        height: 35px;
+        padding: 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        color: #FFFFFF;
+    }
+    .popup-close{
+
+    }
+}
+
+
+// end
+}
