@@ -52,7 +52,6 @@ var sliderThumbs = new Swiper('.swiper-container', {
   direction: 'horizontal',
   slidesPerView: 1,
   spaceBetween: 24,
-  freeMode: true,
   pagination: {
     el: '.swiper-pagination'
   },
@@ -115,19 +114,28 @@ formValid.addEventListener("submit", function (e) {
   }
 }); // ---------lang
 
+function changeLang(langCode) {
+  var arrayLang = document.querySelectorAll(".header-conteiner__lang .btn");
+
+  for (var i = 0; i < arrayLang.length; i++) {
+    var what = arrayLang[i].dataset.lang;
+
+    if (what == langCode) {
+      arrayLang[i].classList.add("btn-active");
+    } else {
+      arrayLang[i].classList.remove("btn-active");
+    }
+  }
+
+  setCookie("cooc", langCode);
+}
+
 var arrayLang = document.querySelectorAll(".header-conteiner__lang .btn");
 
 var _loop = function _loop(i) {
   arrayLang[i].addEventListener("click", function (e) {
     e.preventDefault();
-
-    for (var u = 0; u < arrayLang.length; u++) {
-      arrayLang[u].classList.remove("btn-active");
-    }
-
-    arrayLang[i].classList.add("btn-active");
-    var langCode = arrayLang[i].dataset.lang;
-    setCookie("lang", langCode); // console.log(langCode);
+    changeLang(arrayLang[i].dataset.lang);
   });
 };
 
@@ -135,15 +143,22 @@ for (var i = 0; i < arrayLang.length; i++) {
   _loop(i);
 }
 
-for (var a = 0; a < arrayLang.length; a++) {
-  var langCode = arrayLang[a].dataset.lang;
+var voidLang = getCookie("cooc");
 
-  if (langCode == getCookie("lang")) {
-    arrayLang[a].classList.add("btn-active");
-  } else {
-    arrayLang[a].classList.remove("btn-active");
-  }
-}
+if (voidLang != null) {
+  changeLang(voidLang);
+} // for(let a =0; a<arrayLang.length; a++){
+//     let langCode = arrayLang[a].dataset.lang;
+//     if(langCode == getCookie("lang"))
+//     {
+//         arrayLang[a].classList.add("btn-active");
+//     }
+//     else
+//     {
+//         arrayLang[a].classList.remove("btn-active");
+//     }
+// }
+
 
 function setCookie(name, value, days) {
   var expires = "";

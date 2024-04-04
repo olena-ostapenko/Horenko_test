@@ -43,7 +43,7 @@ burgerMenuOpen.addEventListener("click", function (e) {
         menu.classList.remove("hidden")
 
         menu.classList.add(".burger-adaptive")
-    
+
         telephone.classList.remove("hidden");
         lang.classList.remove("hidden");
 
@@ -62,13 +62,11 @@ burgerMenuOpen.addEventListener("click", function (e) {
 
 // slider
 
-const sliderThumbs = new Swiper('.swiper-container', { 
-    direction: 'horizontal', 
-    slidesPerView: 1, 
-    spaceBetween: 24, 
-   
-    freeMode: true, 
-   
+const sliderThumbs = new Swiper('.swiper-container', {
+    direction: 'horizontal',
+    slidesPerView: 1,
+    spaceBetween: 24,
+    
     pagination: {
         el: '.swiper-pagination',
     },
@@ -87,51 +85,51 @@ const sliderThumbs = new Swiper('.swiper-container', {
 
 
 // cookie------------------------------------
-let btnCookie= document.querySelector(".btn-cookie")
+let btnCookie = document.querySelector(".btn-cookie")
 
-btnCookie.addEventListener("click", function(e){
+btnCookie.addEventListener("click", function (e) {
     e.preventDefault();
-document.querySelector(".сookies").classList.add("hidden")
-  
+    document.querySelector(".сookies").classList.add("hidden")
+
 })
 
 // call + open popup------------------------------------
 let mainPopUp = document.querySelector(".popup")
 
 let inPopUpForm = document.querySelector(".popup-box")
-let closePopUpForm =document.querySelector(".popup-box_btn")
-let inPopUpSuccess= document.querySelector(".popup-success")
+let closePopUpForm = document.querySelector(".popup-box_btn")
+let inPopUpSuccess = document.querySelector(".popup-success")
 
-let formValid=document.getElementById("valid")
+let formValid = document.getElementById("valid")
 
 
 let inputName = document.querySelector(".name-field")
 let inputPhone = document.querySelector(".number-field")
 
-let popUpSuccess=document.querySelector(".popup-success")
+let popUpSuccess = document.querySelector(".popup-success")
 
-btnCall.addEventListener("click", function(e){
+btnCall.addEventListener("click", function (e) {
     e.preventDefault();
     mainPopUp.classList.remove("hidden");
     inPopUpForm.classList.remove("hidden");
     inputPhone.value = "";
- });
- closePopUpForm.addEventListener("click", function (e){
+});
+closePopUpForm.addEventListener("click", function (e) {
     mainPopUp.classList.add("hidden");
     inPopUpForm.classList.add("hidden");
 });
-popUpSuccess.addEventListener("click", function(e){
+popUpSuccess.addEventListener("click", function (e) {
     e.preventDefault();
     mainPopUp.classList.add("hidden");
 });
- // ----------
-formValid.addEventListener("submit", function(e){
+// ----------
+formValid.addEventListener("submit", function (e) {
     e.preventDefault()
-    if(!inputPhone.value){
+    if (!inputPhone.value) {
         inputPhone.classList.add("input-error");
-    
+
     }
-    else if(inputPhone.value.match(/^\+380\d{3}\d{2}\d{2}\d{2}$/)){
+    else if (inputPhone.value.match(/^\+380\d{3}\d{2}\d{2}\d{2}$/)) {
         inputPhone.classList.remove("input-error");
         inPopUpForm.classList.add("hidden");
         popUpSuccess.classList.remove("hidden");
@@ -140,7 +138,7 @@ formValid.addEventListener("submit", function(e){
             mainPopUp.classList.add("hidden");
         }, 5000);
     }
-    else{
+    else {
         inputPhone.classList.add("input-error");
     }
 })
@@ -148,53 +146,71 @@ formValid.addEventListener("submit", function(e){
 
 // ---------lang
 
+
+function changeLang(langCode) {
+    let arrayLang = document.querySelectorAll(".header-conteiner__lang .btn")
+    for (let i = 0; i < arrayLang.length; i++) {
+        let what = arrayLang[i].dataset.lang
+
+        if (what == langCode) {
+            arrayLang[i].classList.add("btn-active");
+
+        }
+        else {
+            arrayLang[i].classList.remove("btn-active");
+        }
+    }
+    setCookie("cooc", langCode)
+
+
+}
+
 let arrayLang = document.querySelectorAll(".header-conteiner__lang .btn")
 
 for(let i =0; i<arrayLang.length; i++){
     arrayLang[i].addEventListener("click", function(e){
         e.preventDefault()
-        for(let u = 0; u<arrayLang.length; u++){
-            arrayLang[u].classList.remove("btn-active");
-        }
-        arrayLang[i].classList.add("btn-active")
-        let langCode = arrayLang[i].dataset.lang;
-        setCookie("lang", langCode);
-        // console.log(langCode);
-        
+        changeLang( arrayLang[i].dataset.lang)
     });
 }
 
-for(let a =0; a<arrayLang.length; a++){
-    let langCode = arrayLang[a].dataset.lang;
-    if(langCode == getCookie("lang"))
-    {
-        arrayLang[a].classList.add("btn-active");
-    }
-    else
-    {
-        arrayLang[a].classList.remove("btn-active");
-    }
+let voidLang = getCookie("cooc")
+
+if (voidLang != null){
+    changeLang(voidLang)
 }
 
-function setCookie(name,value,days) {
+// for(let a =0; a<arrayLang.length; a++){
+//     let langCode = arrayLang[a].dataset.lang;
+//     if(langCode == getCookie("lang"))
+//     {
+//         arrayLang[a].classList.add("btn-active");
+//     }
+//     else
+//     {
+//         arrayLang[a].classList.remove("btn-active");
+//     }
+// }
+
+function setCookie(name, value, days) {
     var expires = "";
     if (days) {
         var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         expires = "; expires=" + date.toUTCString();
     }
-    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
+    for (var i = 0; i < ca.length; i++) {
         var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
     }
     return null;
 }
-function eraseCookie(name) {   
-    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+function eraseCookie(name) {
+    document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
